@@ -23,7 +23,7 @@ set(CMAKE_AUTORCC ON)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${QTGSTREAMER_FLAGS}")
 
 # LIBVLC #
-find_package(VLCQt REQUIRED COMPONENTS Core Qml Widgets)
+#find_package(VLCQt REQUIRED COMPONENTS Core Qml Widgets)
 
 #Qt5
 find_package(Qt5Core REQUIRED)
@@ -53,5 +53,4 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 add_executable(gui_drivingstation ${HEADER_FILES} ${SOURCE_FILES} ${RESOURCES} ${UIS})
 target_link_libraries(gui_drivingstation Qt5Core Qt5Widgets Qt5Gui
-  VLCQtCore VLCQtWidgets VLCQtQml # LIBVLC and LIBVLCQt wrapper
 )

@@ -10,10 +10,6 @@
 #include <QFileDialog>
 #include <QInputDialog>
 
-#include <VLCQtCore/Common.h>
-#include <VLCQtCore/Instance.h>
-#include <VLCQtCore/Media.h>
-#include <VLCQtCore/MediaPlayer.h>
 ////////////
 
 // Constructor
@@ -40,16 +36,12 @@ Window::Window(QRect screen, QWidget *parent) : QWidget(parent)
 
   connected = false;
 
-  //LibVLC://
-  _instance = new VlcInstance(VlcCommon::args(), this);
-  _player = new VlcMediaPlayer(_instance);
-  ///////////
 }
 
 Window::~Window(){
-  delete _player;
-  delete _media;
-  delete _instance;
+//  delete _player;
+//  delete _media;
+//  delete _instance;
 }
 
 //LibVLC://
@@ -61,8 +53,8 @@ void Window::openLocal()
                                         tr("Multimedia files(*)"));
    if (file.isEmpty())
        return;
-   _media = new VlcMedia(file, true, _instance);
-   _player->open(_media);
+//   _media = new VlcMedia(file, true, _instance);
+//   _player->open(_media);
 }
 
 void Window::openUrl()
@@ -71,8 +63,8 @@ void Window::openUrl()
            QInputDialog::getText(this, tr("Open Url"), tr("Enter the URL you want to play"));
    if (url.isEmpty())
        return;
-   _media = new VlcMedia(url, _instance);
-   _player->open(_media);
+//   _media = new VlcMedia(url, _instance);
+//   _player->open(_media);
 }
 ////////////
 

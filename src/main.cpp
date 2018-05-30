@@ -1,9 +1,7 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QDebug>
-//LIBVLC//
 #include <QtWidgets/QApplication>
-//////////
 #include <QTextCodec>
 
 #include "window.h"
