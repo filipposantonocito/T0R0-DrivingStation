@@ -2,7 +2,6 @@
 #include <QDesktopWidget>
 #include <QDebug>
 //LIBVLC//
-#include <VLCQtCore/Common.h>
 #include <QtWidgets/QApplication>
 //////////
 #include <QTextCodec>
@@ -14,9 +13,6 @@ int main(int argc, char **argv)
   QCoreApplication::setApplicationName("T0R0 GUI DRIVING STATION");
 	QApplication app(argc, argv);
 
-	//LibVLC://
-	VlcCommon::setPluginPath(app.applicationDirPath() + "/plugins");
-	///////////
 
 	QDesktopWidget *desktop = app.desktop();
 	Window window(desktop->screenGeometry());

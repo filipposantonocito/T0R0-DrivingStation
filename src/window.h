@@ -10,11 +10,6 @@
 class QBoxLayout;
 class QLabel;
 
-//LibVLC://
-class VlcInstance;
-class VlcMedia;
-class VlcMediaPlayer;
-///////////
 
 class Window : public QWidget
 {
@@ -33,11 +28,6 @@ protected:
 
 private:
     bool connected;
-		//LibVLC://
-		VlcInstance *_instance;
-		VlcMedia *_media;
-		VlcMediaPlayer *_player;
-		///////////
 };
 
 #endif // WINDOW_H
