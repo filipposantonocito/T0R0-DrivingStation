@@ -3,7 +3,7 @@
 
 #include <QKeyEvent>
 #include <QWidget>
-#include <QTcpSocket>
+//#include <QTcpSocket>
 #include <QByteArray>
 
 #include "TcpClient.h"
