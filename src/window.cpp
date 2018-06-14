@@ -6,12 +6,14 @@
 #include <QCoreApplication>
 #include <QKeyEvent>
 
+// TCP //
+#include <QTcpServer>
 
+// GAMEPAD //
+#include "gamepad.h"
 
 //JOYSTICK//
 #include "joystick.h"
-#include <QTcpServer>
-
 
 
 // Constructor

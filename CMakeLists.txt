@@ -27,10 +27,17 @@ find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5Network REQUIRED)
+find_package(qtgamepad REQUIRED)
+
+
+
 include_directories(${Qt5Core_INCLUDE_DIRS})
 include_directories(${Qt5Widgets_INCLUDE_DIRS})
 include_directories(${Qt5Gui_INCLUDE_DIRS})
 include_directories(${Qt5Network_INCLUDE_DIRS})
+include_directories(${Qt5Gamepad_INCLUDE_DIRS})
+message("####################")
+message(${qtgamepad_INCLUDE_DIRS})
 
 #C++ code
 file(GLOB HEADER_FILES "src/*.h")
