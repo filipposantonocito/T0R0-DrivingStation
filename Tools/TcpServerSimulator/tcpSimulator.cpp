@@ -20,19 +20,19 @@ int main()
 
 
     TcpServer *serverA1 = new TcpServer(50150);
-    serverRearRight->start16();
+    serverA1->start16();
     TcpServer *serverA2 = new TcpServer(50151);
-    serverRearRight->start16();
+    serverA2->start16();
     TcpServer *serverA3 = new TcpServer(50152);
-    serverRearRight->start16();
+    serverA3->start16();
     TcpServer *serverA4 = new TcpServer(50153);
-    serverRearRight->start16();
+    serverA4->start16();
     TcpServer *serverA5 = new TcpServer(50154);
-    serverRearRight->start16();
+    serverA5->start16();
     TcpServer *serverA6 = new TcpServer(50155);
-    serverRearRight->start16();
+    serverA6->start16();
     TcpServer *serverA7 = new TcpServer(50156);
-    serverRearRight->start16();
+    serverA7->start16();
 
 
     uint16_t dataFL = 0, dataFR = 0, dataRL = 0, dataRR = 0;
