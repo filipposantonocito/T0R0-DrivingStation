@@ -69,24 +69,24 @@ void MainWindow::ChangeText_Button(int n, int pressed) {
     switch (n) {
         /* First wrist rotary gear*/
         case JOYSTICK_3:
-            if (pressed) gamepad_tcp->writeData16(ARM_WRIST_ROT1, -32768);
-            else         gamepad_tcp->writeData16(ARM_WRIST_ROT1, 0);
+            if (pressed) arm_tcp->writeData16(ARM_WRIST_ROT1, -32768);
+            else         arm_tcp->writeData16(ARM_WRIST_ROT1, 0);
             break;
 
         case JOYSTICK_4:
-            if (pressed) gamepad_tcp->writeData16(ARM_WRIST_ROT1, 32767);
-            else         gamepad_tcp->writeData16(ARM_WRIST_ROT1, 0);
+            if (pressed) arm_tcp->writeData16(ARM_WRIST_ROT1, 32767);
+            else         arm_tcp->writeData16(ARM_WRIST_ROT1, 0);
             break;
 
         /* Second wrist rotary gear*/
         case JOYSTICK_5:
-            if (pressed) gamepad_tcp->writeData16(ARM_WRIST_ROT2, -32768);
-            else         gamepad_tcp->writeData16(ARM_WRIST_ROT2, 0);
+            if (pressed) arm_tcp->writeData16(ARM_WRIST_ROT2, -32768);
+            else         arm_tcp->writeData16(ARM_WRIST_ROT2, 0);
             break;
 
         case JOYSTICK_6:
-            if (pressed) gamepad_tcp->writeData16(ARM_WRIST_ROT2, 32767);
-            else         gamepad_tcp->writeData16(ARM_WRIST_ROT2, 0);
+            if (pressed) arm_tcp->writeData16(ARM_WRIST_ROT2, 32767);
+            else         arm_tcp->writeData16(ARM_WRIST_ROT2, 0);
             break;
     }
 }
@@ -100,29 +100,29 @@ void MainWindow::ChangeText_Axis(int n, int position) {
 
     switch (n) {
         case JOYSTICK_PITCH:
-            gamepad_tcp->writeData16(ARM_SHOULDER, position);
+            arm_tcp->writeData16(ARM_SHOULDER, position);
             break;
 
         case JOYSTICK_ROLL:
-            gamepad_tcp->writeData16(ARM_ELBOW, position);
+            arm_tcp->writeData16(ARM_ELBOW, position);
             break;
 
         case JOYSTICK_YAW:
-            gamepad_tcp->writeData16(ARM_SLEAWINGGEAR, position);
+            arm_tcp->writeData16(ARM_SLEAWINGGEAR, position);
             break;
 
         case JOYSTICK_THROTTLE:
-            if      (position < -30000) gamepad_tcp->writeData16(ARM_PINCH, -32768);
-            else if (position >  30000) gamepad_tcp->writeData16(ARM_PINCH,  32767);
-            else                        gamepad_tcp->writeData16(ARM_PINCH,      0);
+            if      (position < -30000) arm_tcp->writeData16(ARM_PINCH, -32768);
+            else if (position >  30000) arm_tcp->writeData16(ARM_PINCH,  32767);
+            else                        arm_tcp->writeData16(ARM_PINCH,      0);
             break;
 
         case JOYSTICK_ARROWLR:
-            gamepad_tcp->writeData16(ARM_WRIST_BEND, position);
+            arm_tcp->writeData16(ARM_WRIST_BEND, position);
             break;
 
         case JOYSTICK_ARROWUD:
-            gamepad_tcp->writeData16(ARM_WRIST_BEND, position);
+            arm_tcp->writeData16(ARM_WRIST_BEND, position);
             break;
         }
 }
