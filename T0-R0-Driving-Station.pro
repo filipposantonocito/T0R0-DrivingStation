@@ -38,6 +38,7 @@ contains(QT_VERSION, ^5\\..*) {
   QT += widgets
 }
 
+include(QJoysticks/QJoysticks.pri)
 
 # Recommended if you are using g++ 4.5 or later. Must be removed for other compilers.
 #QMAKE_CXXFLAGS += -std=c++0x
