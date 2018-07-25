@@ -122,7 +122,7 @@ void MainWindow::ChangeText_Axis(int n, int position) {
             break;
 
         case JOYSTICK_ARROWUD:
-            arm_tcp->writeData16(ARM_WRIST_BEND, position);
+            arm_tcp->writeData16(ARM_WRIST_BEND, -position);
             break;
         }
 }
