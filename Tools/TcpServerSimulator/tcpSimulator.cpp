@@ -93,7 +93,7 @@ int main()
             arm7 = serverA7->readLast16();
         }
 
-        printf(" |LF %5hu | LR %5hu | RL %5hu | RR %5hu || A1 %5hu | A2 %5hu | A3 %5hu | A4 %5hu | A5 %5hu | A6 %5hu | A7 %5hu | \r", dataFL, dataFR, dataRL, dataRR, arm1, arm2, arm3, arm4, arm5, arm6, arm7);
+        printf(" |FL %5hu | RL %5hu | FR %5hu | RR %5hu || A1 %5hu | A2 %5hu | A3 %5hu | A4 %5hu | A5 %5hu | A6 %5hu | A7 %5hu | \r", dataFL, dataRL, dataFR, dataRR, arm1, arm2, arm3, arm4, arm5, arm6, arm7);
         fflush(stdout);
     }
     printf(" \n----------------------------------------\n");
