@@ -14,8 +14,7 @@ TcpHarbinger::TcpHarbinger(QWidget *parent, const char* _address, int _startPort
 
     // Create TCP connection for each axis
     for (int i=0; i < nConnections; i++) {
-        qDebug() << "TCP["<< i <<"]: estabilshing TCP port: [" << startPort + i << "]";
-        vecClients[i] = new TcpClient(address, startPort + i);
+        vecClients[i] = connect();
     }
     // Initialize Axis to zero
     for (int i=0; i < nConnections; i++) {
@@ -36,18 +35,24 @@ void TcpHarbinger::run () {
     qDebug() << "TcoHarbinger: Starting Loop";
 
     while (m_loop)  // Loop -> if  m_loop = true
-    {    
+    {
         for (int i=0; i < nConnections; i++)      // Read data array and send trough TCP
         {
             if(!vecClients[i]->isConnected())   // If connection closed, reconnect
                     {
-                        //delete vecClients[i];
+                        vecClients[i] = reconnect(i);
 
-                        qDebug() << "TCP["<< i <<"]: Reconnecting TCP port: ADD: " << address << "[" << startPort + i << "]";
-                        vecClients[i] = new TcpClient(address, startPort + i);
+                        if (!vecClients[i]->isConnected()) vecTrials[i]++;  // Count failed trials
+                        else vecTrials = 0;
 
-                        vecClients[i]->isConnected();
-
+                        if (vecTrials[i] < 10)  // Increase retrial time
+                            usleep(5e5);
+                        else if (vecTrials[i] < 25)
+                            usleep(4e6);
+                        else if (vecTrials[i] < 60)
+                            usleep(10e6);
+                        else
+                            usleep(20e6);
 
                     }
             else if(vecClients[i] != NULL) {      // Send data
@@ -97,4 +102,17 @@ int TcpHarbinger::writeData16 (int connectionId, int16_t value)
 int16_t TcpHarbinger::readLastAxisValue (int axis)
 {
     return (int16_t) vecData16[axis] - 32768;
+}
+
+TcpClient* TcpHarbinger::connect(int index)
+{
+    qDebug() << "TCP["<< index <<"]: estabilshing TCP port: [" << startPort + index << "]";
+    vecClients[index] = new TcpClient(address, startPort + index);
+}
+
+TcpClient* TcpHarbinger::reconnect(int index)
+{
+    delete vecClients[index];
+    qDebug() << "TCP["<< index <<"] reconnecting: estabilshing TCP port \tADDRESS: " << address " [" << startPort + index << "]";
+    vecClients[index] = new TcpClient(address, startPort + index);
 }
