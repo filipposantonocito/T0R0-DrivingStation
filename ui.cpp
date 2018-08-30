@@ -20,6 +20,25 @@ WindowUi::WindowUi(QWidget *parent) : QWidget(parent)
     qDebug() << "\nVideo started successfully\n";
     /////////////
 
+    //* CAMERAs BUTTON *//
+    // Create the button, make "this" the parent
+    videoSwitchZedL = new QPushButton("ZED Left", this);
+    videoSwitchZedR = new QPushButton("ZED Right", this);
+    videoSwitchTurret = new QPushButton("Turret Cam", this);
+    videoSwitchArm = new QPushButton("Arm Cam", this);
+
+    // set size and location of the button
+    videoSwitchZedL->   setGeometry(QRect(QPoint(100, ( (this->height()-CAMERA_HEIGHT) /2) +30, QSize(100, 50) )));
+    videoSwitchZedR->   setGeometry(QRect(QPoint(210, ( (this->height()-CAMERA_HEIGHT) /2) +30, QSize(100, 50) )));
+    videoSwitchTurret-> setGeometry(QRect(QPoint(320, ( (this->height()-CAMERA_HEIGHT) /2) +30, QSize(100, 50) )));
+    videoSwitchArm->    setGeometry(QRect(QPoint(430, ( (this->height()-CAMERA_HEIGHT) /2) +30, QSize(100, 50) )));
+
+    //// >>>> @todo connect to MQTT handler. Publish command.
+    // Connect button signal to appropriate slot
+    // connect(videoSwitchZedL,   SIGNAL (released()), this, SLOT (videoSwitch(1)));
+    // connect(videoSwitchZedR,   SIGNAL (released()), this, SLOT (videoSwitch(2)));
+    // connect(videoSwitchTurret, SIGNAL (released()), this, SLOT (videoSwitch(3)));
+    // connect(videoSwitchArm,    SIGNAL (released()), this, SLOT (videoSwitch(4)));
 
 }
 
@@ -70,7 +89,7 @@ void WindowUi::CreateUI()
     //joystickdisplay->show();
     ///////
 
-    /* ARM */
+    /* MOBILITY */
     gamepaddisplay = new GamepadDisplay(this);
     gamepaddisplay->setGeometry(45, this->height()-620, 110, 253);
     //gamepaddisplay->show();

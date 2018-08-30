@@ -33,6 +33,8 @@ private:
     //Gstreamer://
     VoipVideoWidget *camera1_videoWidget;
     //////////////
+
+    QButton* videoSwitchZedL, videoSwitchZedR, videoSwitchTurret, videoSwitchArm;
 };
 
 #endif // UI_H
