@@ -19,6 +19,10 @@
 #include "config.h"
 #include "inputmapping.h"
 
+#define DEBUG_GAMEPAD 0
+#define DEBUG_JOYSTICK 0
+#define DEBUG_REAMAP 0
+
 JoystickHandler::JoystickHandler(QWidget *parent, int _hidType) : QThread()
 {
     par = parent;
@@ -81,7 +85,7 @@ void JoystickHandler::run()
             {
                 if (event.isButton())
                 {
-                    qDebug() << "Gamepad > Button " << event.number << " is " << (event.value == 0 ? "up" : "down");
+                    if (DEBUG_GAMEPAD) qDebug() << "Gamepad > Button " << event.number << " is " << (event.value == 0 ? "up" : "down");
 
                     switch (event.number)
                     {
@@ -92,7 +96,7 @@ void JoystickHandler::run()
                 else if (event.isAxis())
                 {
                     axisesValues[event.number] = event.value;
-                    qDebug() << "Gamepad > Axis " << event.number << " is at position " << event.value;
+                    if (DEBUG_GAMEPAD) qDebug() << "Gamepad > Axis " << event.number << " is at position " << event.value;
 
 
                     switch (event.number) {
@@ -119,7 +123,7 @@ void JoystickHandler::run()
             {
                 if (event.isButton())
                 {
-                    qDebug() << "Joystick > Button " << event.number << " is " << (event.value == 0 ? "up" : "down");
+                    if (DEBUG_JOYSTICK) qDebug() << "Joystick > Button " << event.number << " is " << (event.value == 0 ? "up" : "down");
 
                     switch (event.number) {
                         // First wrist rotary gear
@@ -148,7 +152,7 @@ void JoystickHandler::run()
                 else if (event.isAxis())
                 {
                     axisesValues[event.number] = event.value;
-                    //qDebug() << "Joystick > Axis " << event.number << " is at position " << event.value;
+                    if (DEBUG_JOYSTICK) qDebug() << "Joystick > Axis " << event.number << " is at position " << event.value;
 
                     switch (event.number) {
                         case JOYSTICK_PITCH:
@@ -246,7 +250,7 @@ int16_t JoystickHandler::inputRemap (int16_t x, float a, float b, int c)
 
     // ans [-1,1]
 
-    qDebug() << "REMAP\t\t\t\t\t\t" << ans  << "\t\t" << rel;
+    if (DEBUG_REAMAP) qDebug() << "REMAP\t\t\t\t\t\t" << ans  << "\t\t" << rel;
 
     return ans*32767;
 }
